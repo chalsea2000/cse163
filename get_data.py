@@ -32,7 +32,7 @@ def build_df():
         parameters = {
             'part': 'statistics,snippet,contentDetails',
             'chart': 'mostPopular',
-            'maxResults': 50,  #ranges from 1-50
+            'maxResults': 50,  # ranges from 1-50
             'regionCode': country
         }
         videos = requests.get("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyDRT35vmOpebxG553jTP5KgAT0-nYaCZ-s",
