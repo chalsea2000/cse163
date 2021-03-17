@@ -92,7 +92,6 @@ def plot_duration(videos):
         'Duration Distribution for Trending Videos (Less than 1 Hour)')
     plt.savefig('duration_plot.png', bbox_inches='tight')
     # Checking the outlier
-    # print(videos['duration_secs'].max())
     # print(videos[videos['duration_secs'] == videos['duration_secs'].max()])
 
 
@@ -108,7 +107,6 @@ def plot_tag_num(videos):
     ax.set_title('Number of Tags for Trending Videos')
     plt.savefig('tag_num_plot.png', bbox_inches='tight')
     # Check outlier
-    # print(videos['tag_num'].max())
     # print(videos[videos['tag_num'] == videos['tag_num'].max()])
 
 
@@ -172,7 +170,6 @@ def views_ml(videos):
     # Filter out outliers
     videos = videos[(videos['views'] > quantile25) &
                     (videos['views'] < quantile75)]
-    print(videos)
     country = pd.get_dummies(videos['country'])
     categories = pd.get_dummies(videos['category'])
     features = videos[['title_length', 'tag_num', 'duration_secs']].join(
