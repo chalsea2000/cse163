@@ -14,10 +14,10 @@ import isodate
 # python 163.py
 def build_df():
     '''
-    This function requests data from the Youtube API. It should extract 50
-    videos from each of the 17 countries considered to consume the most media.
-    These videos should all be from the most popular chart. Returned dataset
-    will consists the information of 850 trending videos in total.
+    This function requests data from the Youtube API and turns it into a
+    data frame. It extracts 50 videos from each of the 17 countries considered 
+    to consume the most media. These videos should all be from the most popular chart.
+    Returned dataset will consists of information about 850 trending videos in total.
     '''
     # countries of interest
     countries = ['GB', 'US', 'FR', 'ID', 'KE', 'NG', 'DE', 'KR', 'AU', 'JP',
@@ -81,6 +81,10 @@ def build_df():
 
 
 def build_categories_df():
+    """
+    Retrieves category information from the YouTube API and turns it into a
+    data frame. Every region has the same category information so the region does not matter.
+    """ 
     categories_df = {'id': [], 'category_name': []}
     parameters = {
         'part': 'snippet',
@@ -98,6 +102,10 @@ def build_categories_df():
 
 
 def build_merge(category_df):
+    '''
+    Creates a data frame from information from the YouTube API, calculates the like
+    dislike ratio to graph the like dislike ratio per country graph.
+    '''
     countries = ['GB', 'US', 'FR', 'ID', 'KE', 'NG', 'DE', 'KR', 'AU', 'JP',
                  'ES', 'CZ', 'PH', 'CA', 'RU', 'MX', 'IT']
     video_df = {'country': [], 'category': [], 'likes/dislikes': []}

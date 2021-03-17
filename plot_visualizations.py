@@ -19,6 +19,11 @@ MERGE_CATEGORY = '/home/merge_category.csv'
 
 
 def world_like_dislike_raio(videos_df, categories_df):
+    '''
+    This function takes in the trending videos data set and
+    the categories data set. It plots the total likes divides
+    by the total dislikes per category in a bar chart.
+    '''
     likes_df = videos_df.groupby('category')['likes'].sum()
     dislikes_df = videos_df.groupby('category')['dislikes'].sum()
     merged = likes_df.to_frame().merge(
@@ -36,6 +41,11 @@ def world_like_dislike_raio(videos_df, categories_df):
 
 
 def world_views_plot(videos_df, categories_df):
+    '''
+    This function takes in the trending videos data set and
+    the categories data set. It plots the total views per category
+    in a bar chart.
+    '''
     views_df = videos_df.groupby('category')['views'].sum()
     merged = views_df.to_frame().merge(categories_df, left_on='category',
                                        right_on='id', how='left')
@@ -49,6 +59,11 @@ def world_views_plot(videos_df, categories_df):
 
 
 def plot_likes_dislikes_ratio(merge_category):
+    '''
+    This plot takes in a data frame on trending videos
+    and plots the categories with highest total likes
+    divides by total dislikes per country.
+    '''
     sns.catplot(x='country', y='likes/dislikes', hue='category_name',
                 kind='bar', data=merge_category)
     plt.xticks(rotation=-45)
