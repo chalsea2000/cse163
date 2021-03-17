@@ -35,7 +35,7 @@ def build_df():
             'maxResults': 50,  # ranges from 1-50
             'regionCode': country
         }
-        videos = requests.get("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyDRT35vmOpebxG553jTP5KgAT0-nYaCZ-s",
+        videos = requests.get("https://www.googleapis.com/youtube/v3/videos?key=your_api_key",
                               params=parameters)
         videos = videos.json()
         items = videos['items']
@@ -90,7 +90,7 @@ def build_categories_df():
         'part': 'snippet',
         'regionCode': 'US'
     }
-    cat = requests.get('https://www.googleapis.com/youtube/v3/videoCategories?key=AIzaSyDRT35vmOpebxG553jTP5KgAT0-nYaCZ-s',
+    cat = requests.get('https://www.googleapis.com/youtube/v3/videoCategories?key=your_api_key',
                        params=parameters)
     cat = cat.json()
     items = cat['items']
@@ -116,7 +116,7 @@ def build_merge(category_df):
             'maxResults': 50,  # ranges from 1-50
             'regionCode': country
         }
-        videos = requests.get("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyDRT35vmOpebxG553jTP5KgAT0-nYaCZ-s",
+        videos = requests.get("https://www.googleapis.com/youtube/v3/videos?key=your_api_key",
                               params=parameters)
         videos = videos.json()
         items = videos['items']
